@@ -11,7 +11,6 @@ node{
         }
         stage('Update Docker Compose File') {
             def hostIP = InetAddress.localHost.hostAddress
-            echo "${hostIP}"
             sh'sed -i "s/.*PLEX_CLAIM.*/      - PLEX_CLAIM=claim-$(cat token)/" docker-compose.yml'
             sh"sed -i 's/.*ADVERTISE_IP.*/      - ADVERTISE_IP=http:\\/\\/${hostIP}:32400\\//' docker-compose.yml"
         }
