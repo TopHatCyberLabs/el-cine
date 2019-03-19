@@ -5,7 +5,6 @@ node{
                 conjurSecretCredential(credentialsId:'plex_password',variable:'PLEX_PASSWORD'),
                 conjurSecretCredential(credentialsId:'plex_username',variable:'PLEX_USERNAME')
                 ]){
-                sh'echo $PLEX_PASSWORD > newfile'
                 sh'docker run -t --rm -e PLEX_USERNAME=$PLEX_USERNAME -e PLEX_PASSWORD=$PLEX_PASSWORD test > token || exit 0'
             }
         }
