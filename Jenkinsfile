@@ -19,5 +19,8 @@ node{
                 sh'docker rm plex -f'
                 sh'docker-compose up -d' 
         }
+        stage('Remove Sensitive Files'){
+            sh'rm -f docker-compose.yml token'
+        }
     }
 }
