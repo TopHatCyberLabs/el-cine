@@ -5,7 +5,7 @@ node{
                 conjurSecretCredential(credentialsId:'plex_password',variable:'PLEX_PASSWORD'),
                 conjurSecretCredential(credentialsId:'plex_username',variable:'PLEX_USERNAME')
                 ]){
-                sh'docker run -t --rm -e PLEX_USERNAME=$PLEX_USERNAME -e PLEX_PASSWORD=$PLEX_PASSWORD test > token || exit 0'
+                sh'python3.7 getToken.py $PLEX_USERNAME $PLEX_PASSWORD test > token || exit 0'
             }
         }
         stage('Update Docker Compose File') {
