@@ -19,5 +19,8 @@ node{
                 sh'docker rm plex -f'
                 sh'docker-compose up -d' 
         }
+        stage('Cleanup Workspace'){
+            sh"rm -rf ..\\/${env.JOB_NAME} ..\\/${env.JOB_NAME}@script ..\\/${env.JOB_NAME}.tmp"
+        }
     }
 }
